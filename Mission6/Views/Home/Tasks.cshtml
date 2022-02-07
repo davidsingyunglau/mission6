@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1 class="text-center">Enter a Task</h1>
+
+<form method="post" style="text-align: center">
+
+    <div asp-validation-summary="All"></div>
+    <fieldset>
+        <label>Task:</label>
+        <input type="text" required />
+        <br />
+        <label>Due Date:</label>
+        <input type="date" />
+        <br />
+        <label>Quadrant:</label>
+        <select required>
+            <option value="Q1">Q1</option>
+            <option value="Q2">Q2</option>
+            <option value="Q3">Q3</option>
+            <option value="Q4">Q4</option>
+        </select>        <br />
+        <label>Category:</label>
+        <select>
+            <option value="Home">Home</option>
+            <option value="School">School</option>
+            <option value="Work">Work</option>
+            <option value="Church">Church</option>
+
+        </select>
+        <br />
+        <label>Completed:</label>
+        <select>
+            <option value=True>True</option>
+            <option value=False>False</option>
+        </select>
+
+    </fieldset>
+</form>
+
