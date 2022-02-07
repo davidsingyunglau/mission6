@@ -27,6 +27,25 @@
     <div class="row border-bottom border-dark">
         <div class="col-2">
             <h3>Important</h3>
+            <table class="table">
+                @foreach (var x in Model)
+                {
+                    @if (x.Quandrant == 'Q1')
+                    {
+                        <tr>
+                            <td>@x.Title</td>
+                            <td>@x.Director</td>
+                            <td>@x.Rating</td>
+                            <td>@x.Edited</td>
+                            <td>@x.Lent_To</td>
+                            <td>@x.Note</td>
+                            <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.MovieID">Edit</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.MovieID">Delete</a></td>
+                        </tr>
+
+                    }
+                }
+            </table>
         </div>
         <div class="col-5 border-left border-dark">
             <h4>Quadrant 1</h4>
