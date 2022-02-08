@@ -11,10 +11,12 @@ namespace Mission6.Controllers
 {
     public class HomeController : Controller
     {
+        private TaskDataContext Context { get; set; }
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, TaskDataContext x)
         {
+            Context = x;
             _logger = logger;
         }
 
@@ -25,6 +27,8 @@ namespace Mission6.Controllers
 
         public IActionResult Tasks()
         {
+            
+            ViewBag.Categories = Context.Category.ToList();
             return View();
         }
 
@@ -32,6 +36,7 @@ namespace Mission6.Controllers
         {
             return View();
         }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

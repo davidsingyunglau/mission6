@@ -3,40 +3,42 @@
 *@
 @{
 }
+@model Mission6.Models.Tasks
+
 <h1 class="text-center">Enter a Task</h1>
 
 <form method="post" style="text-align: center">
 
     <div asp-validation-summary="All"></div>
     <fieldset>
-        <label>Task:</label>
-        <input type="text" required />
+        <label asp-for="Task">Task:</label>
+        <input asp-for="Task" type="text" id="Task" name="Task" required />
         <br />
-        <label>Due Date:</label>
-        <input type="date" />
+        <label asp-for="DueDate">Due Date:</label>
+        <input asp-for="DueDate" id="DueDate" name="DueDate" type="date" />
         <br />
-        <label>Quadrant:</label>
-        <select required>
+        <label asp-for="Quadrant">Quadrant:</label>
+        <select asp-for="Quadrant" name="Quadrant" id="Quadrant" required>
             <option value="Q1">Q1</option>
             <option value="Q2">Q2</option>
             <option value="Q3">Q3</option>
-            <option value="Q4">Q4</option>
+            <option value="Q4">Q4</option>x
         </select>        <br />
-        <label>Category:</label>
-        <select>
-            <option value="Home">Home</option>
-            <option value="School">School</option>
-            <option value="Work">Work</option>
-            <option value="Church">Church</option>
-
+        <label asp-for="CategoryID">Category:</label>
+        <select asp-for="CategoryID" required>
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
         </select>
         <br />
-        <label>Completed:</label>
-        <select>
+        <label asp-for="Completed">Completed:</label>
+        <select asp-for="Completed" name="Completed" id="Completed">
             <option value=True>True</option>
             <option value=False>False</option>
         </select>
-
+        <button type="submit">Submit Task</button>
     </fieldset>
 </form>
 
