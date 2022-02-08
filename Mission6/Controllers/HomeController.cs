@@ -13,7 +13,6 @@ namespace Mission6.Controllers
     {
 
         private TaskDataContext TaskContext {get; set;}
-
         public HomeController(TaskDataContext task_data)
         {
             TaskContext = task_data
@@ -73,15 +72,6 @@ namespace Mission6.Controllers
 
         }
         
-        // DELETE
-
-        // [HttpGet]
-        // public IActionResult Delete(int taskid)
-        // {
-        //     var task = TaskContext.Tasks.Single(x => x.TaskID == taskid);
-        //     return View(task);
-        // }
-
         [HttpPost]
         public IActionResult Delete(Tasks task)
         {
