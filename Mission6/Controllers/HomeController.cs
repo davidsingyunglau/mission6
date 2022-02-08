@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission6.Models;
 
@@ -15,7 +16,7 @@ namespace Mission6.Controllers
         private TaskDataContext TaskContext {get; set;}
         public HomeController(TaskDataContext task_data)
         {
-            TaskContext = task_data
+            TaskContext = task_data;
         }
 
         public IActionResult Index()
@@ -26,14 +27,14 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult Tasks()
         {
-            ViewBag.Tasks = TaskContext.Category.ToList()
+            ViewBag.Tasks = TaskContext.Category.ToList();
             return View();
         }
 
         [HttpPost]
         public IActionResult Tasks(Tasks task)
         {
-            ViewBag.Tasks = TaskContext.Category.ToList()
+            ViewBag.Tasks = TaskContext.Category.ToList();
             TaskContext.Add(task);
             TaskContext.SaveChanges();
             return View("TaskList");
@@ -42,11 +43,11 @@ namespace Mission6.Controllers
 
         public IActionResult TaskList()
         {
-            ViewBag.Tasks = TaskContext.Category.ToList()
+            ViewBag.Tasks = TaskContext.Category.ToList();
 
             var tasks = TaskContext.Tasks
                 .Include(x => x.Category)
-                .Where(x => x.Completed == False)
+                .Where(x => x.Completed == false)
                 .ToList();
 
             return View(tasks);
@@ -57,10 +58,10 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult Edit(int taskid) // change to whatever edit file david named
         {
-            ViewBag.Tasks = TaskContext.Category.ToList()
+            ViewBag.Tasks = TaskContext.Category.ToList();
             var task = TaskContext.Tasks.Single( x => x.TaskID == taskid);
 
-            return view("TaskList", task);
+            return View("TaskList", task);
         }
 
         [HttpPost]
