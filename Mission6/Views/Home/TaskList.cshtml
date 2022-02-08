@@ -4,6 +4,9 @@
 @{
 }
 
+@*this part is not connected*@
+@model List<TaskAdd>
+
 <h1 style="text-align: center">Task List</h1>
 <p>Important Tasks</p>
 
@@ -19,9 +22,31 @@
         </div>
         <div class="col-5 border-left border-dark">
             <h3>Urgent</h3>
+            
         </div>
         <div class="col-5 border-left border-dark">
             <h3>Not Urgent</h3>
+            <table class="table">
+                @* Tasks is not connected here *@
+                @foreach (var x in Tasks)
+                {
+                    @if (x.Quandrant == 'Q2')
+                    {
+                        <tr>
+                            <td>@x.Task</td>
+                            <td>@x.DueDate</td>
+                            <td>@x.Category.CategoryName</td>
+                            <td>@x.Completed</td>
+                            <td>@x.Lent_To</td>
+                            <td>@x.Note</td>
+                            @*these may or may not be opening up*@
+                            <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.TaskID">Edit</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.TaskID">Delete</a></td>
+                        </tr>
+
+                    }
+                }
+            </table>
         </div>
     </div>
 
@@ -31,9 +56,47 @@
         </div>
         <div class="col-5 border-left border-dark">
             <h4>Quadrant 1</h4>
+            <table class="table">
+                @foreach (var x in Tasks)
+                {
+                    @if (x.Quandrant == 1)
+                    {
+                        <tr>
+                            <td>@x.Task</td>
+                            <td>@x.DueDate</td>
+                            <td>@x.Category.CategoryName</td>
+                            <td>@x.Completed</td>
+                            <td>@x.Lent_To</td>
+                            <td>@x.Note</td>
+                            <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.TaskID">Updated</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.TaskID">Delete</a></td>
+                        </tr>
+
+                    }
+                }
+            </table>
         </div>
         <div class="col-5 border-left border-dark">
             <h4>Quadrant 2</h4>
+            <table class="table">
+                @foreach (var x in Tasks)
+                {
+                    @if (x.Quandrant == 2)
+                    {
+                        <tr>
+                            <td>@x.Task</td>
+                            <td>@x.DueDate</td>
+                            <td>@x.Category.CategoryName</td>
+                            <td>@x.Completed</td>
+                            <td>@x.Lent_To</td>
+                            <td>@x.Note</td>
+                            <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.TaskID">Updated</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.TaskID">Delete</a></td>
+                        </tr>
+
+                    }
+                }
+            </table>
         </div>
     </div>
 
@@ -43,9 +106,47 @@
         </div>
         <div class="col-5 border-left border-dark">
             <h4>Quadrant 3</h4>
+            <table class="table">
+                @foreach (var x in Tasks)
+                {
+                    @if (x.Quandrant == 3)
+                    {
+                        <tr>
+                            <td>@x.Task</td>
+                            <td>@x.DueDate</td>
+                            <td>@x.Category.CategoryName</td>
+                            <td>@x.Completed</td>
+                            <td>@x.Lent_To</td>
+                            <td>@x.Note</td>
+                            <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.TaskID">Updated</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.TaskID">Delete</a></td>
+                        </tr>
+
+                    }
+                }
+            </table>
         </div>
         <div class="col-5 border-left border-dark">
             <h4>Quadrant 4</h4>
+            <table class="table">
+                @foreach (var x in Tasks)
+                {
+                    @if (x.Quandrant == 4)
+                    {
+                        <tr>
+                            <td>@x.Task</td>
+                            <td>@x.DueDate</td>
+                            <td>@x.Category.CategoryName</td>
+                            <td>@x.Completed</td>
+                            <td>@x.Lent_To</td>
+                            <td>@x.Note</td>
+                            <td><a asp-controller="Home" asp-action="Update" asp-route-movieid="@x.TaskID">Updated</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.TaskID">Delete</a></td>
+                        </tr>
+
+                    }
+                }
+            </table>
         </div>
     </div>
 </div>
