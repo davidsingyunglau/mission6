@@ -32,12 +32,12 @@ namespace Mission6.Controllers
         }
 
         [HttpPost]
-        public IActionResult Tasks(Tasks task)
+        public IActionResult Tasks(Tasks ethan)
         {
             ViewBag.Tasks = TaskContext.Category.ToList();
-            TaskContext.Add(task);
+            TaskContext.Add(ethan);
             TaskContext.SaveChanges();
-            return View("TaskList");
+            return RedirectToAction("TaskList");
 
         }
 
@@ -45,12 +45,12 @@ namespace Mission6.Controllers
         {
             ViewBag.Tasks = TaskContext.Category.ToList();
 
-            var tasks = TaskContext.Tasks
+            var josh = TaskContext.Tasks
                 .Include(x => x.Category)
                 .Where(x => x.Completed == false)
                 .ToList();
 
-            return View(tasks);
+            return View(josh);
                 
         }
 
@@ -59,24 +59,24 @@ namespace Mission6.Controllers
         public IActionResult Edit(int taskid) // change to whatever edit file david named
         {
             ViewBag.Tasks = TaskContext.Category.ToList();
-            var task = TaskContext.Tasks.Single( x => x.TaskID == taskid);
+            var ethan = TaskContext.Tasks.Single( x => x.TaskID == taskid);
 
-            return View("TaskList", task);
+            return View("Tasks", ethan);
         }
 
         [HttpPost]
-        public IActionResult Edit(Tasks task) // change to whatever edit file david named
+        public IActionResult Edit(Tasks ethan) // change to whatever edit file david named
         {
-            TaskContext.Update(task);
+            TaskContext.Update(ethan);
             TaskContext.SaveChanges();
             return RedirectToAction("TaskList");
 
         }
         
         [HttpPost]
-        public IActionResult Delete(Tasks task)
+        public IActionResult Delete(Tasks ethan)
         {
-            TaskContext.Tasks.Remove(task);
+            TaskContext.Tasks.Remove(ethan);
             TaskContext.SaveChanges();
             return RedirectToAction("TaskList");
         }
